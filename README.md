@@ -1,4 +1,4 @@
-# Jenkins - Continue
+# Jenkins and Ansible 
 
 For the next part in my course, tutor has installed Ansible inside our jenkins container. And seems like it we will use this tool a lot and i guess this tool is used mostly for ssh jobs. Our current containers are like this:
 
@@ -34,3 +34,17 @@ Then all we have to do in the last line is to manage our host's information in a
     
     test1 ansible_host=remote-host ansible_user=remote_user ansible_private_key_file=/var/jenkins_home/ansible/remote-key
 
+### What is an Ansible Playbook?
+
+An Ansible Playbook is a YAML file used to automate tasks on remote systems.
+It tells Ansible what to do, on which hosts, and how to do it. Ansible uses inventory files to determine which machines to connect to, typically over SSH.
+
+We creatd a simple playbook to run basic script like this:
+
+    - hosts: test1
+    tasks:
+        - shell: echo Hello World > /tmp/ansible-file
+
+This file takes a hosts name for it to connect. And then we specify the tasks section in order to give some assignment. Here we created a simple shell script that prints out "Hello World" and writes in into the machine. Here is the question, which machine does this text gets writed on? 
+
+Is this code works on our machine or the host's itself? The answer is host's. Ansible connects to the remote host via SSH and executes the commands on that remote host — not on the control machine (your local machine or Jenkins container).
