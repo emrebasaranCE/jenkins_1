@@ -48,3 +48,12 @@ We creatd a simple playbook to run basic script like this:
 This file takes a hosts name for it to connect. And then we specify the tasks section in order to give some assignment. Here we created a simple shell script that prints out "Hello World" and writes in into the machine. Here is the question, which machine does this text gets writed on? 
 
 Is this code works on our machine or the host's itself? The answer is host's. Ansible connects to the remote host via SSH and executes the commands on that remote host — not on the control machine (your local machine or Jenkins container).
+
+### How to Implement Playbook in Jenkins?
+
+My tutor created new job in Jenkins. While configurin settings, we gave the necessary information to the job like this:
+
+- The path to the Ansible inventory file (hosts file)
+- The path to the Ansible playbook (YAML file)
+
+After giving this information, ansible and jenkins was connected. With this update, i do understand now that i can make a lot of things based on this information that i have right now. 
